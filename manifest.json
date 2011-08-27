@@ -20,8 +20,8 @@
                             ],
     "background_page":      "background.html",
     "options_page":         "options.html",
-    "browser_action":      { "default_icon": "convert.gif",
-                             "default_title": "Online conversion service",
-                             "popup": "popup.html" },   
-    "icons":               {  "128": "logo.png" }
+    "browser_action":      { "default_icon": "logo.png",
+                             "default_title": "Download video",
+                             "popup": "popup.html" },
+    "icons":               {  "64": "logo.png" }
 }
