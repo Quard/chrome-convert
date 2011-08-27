@@ -1,5 +1,22 @@
 
 /**
+Shows plain-text notification
+**/
+function notify(message) {
+	// Create a simple text notification:
+	var notification = webkitNotifications.createNotification(
+	  'logo.png',  // icon url - can be relative
+	  'Video downloader',  // notification title
+	  // message body 
+	  message
+	);
+
+	// Then show the notification.
+	notification.show();
+}
+
+
+/**
 Submits current page URL into OC queue
 **/
 function convert_video(info, tab) {
@@ -7,31 +24,13 @@ function convert_video(info, tab) {
 	
  	// submit URL to OC queue
     ocapi.submitVideo(pageUrl, function(record) {
-				
-		// Create a simple text notification:
-		var notification = webkitNotifications.createNotification(
-		  'logo.png',  // icon url - can be relative
-		  'Submitted your video for download',  // notification title
-		   
+			
 		  // notification body text
-		  'URL:' + record.url+"\r\n"+
-		    'download_url:' + record.download_url + 
-		    'hash' +record.hash
-		);
-
-		// // Or create an HTML notification:
-		// 		var notification = webkitNotifications.createHTMLNotification(
-		// 		  'notification.html'  // html url - can be relative
-		// 		);
-
-		// Then show the notification.
-		notification.show();		
+		  msg = 'download_url:' + record.download_url + "\r\n"
+		        'hash' +record.hash
+		  
+		  notify(msg)
 	});
-
-
-
-	
-	
 
 }
 
