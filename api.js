@@ -13,10 +13,13 @@ function insertToQueue(url, content_type, to_format) {
     data.append('queue', xml);
     request.open("POST", 'http://api.online-convert.com/queue-insert', false);
     request.send(data);
-
-    if (request.status == 200) {
-        var dom = request.responseXML;
-        alert(dom);
+    request.onreadystatechange = function(e) {
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+                var dom = request.responseXML;
+                alert(dom);
+            }
+        }
     }
 }
 
