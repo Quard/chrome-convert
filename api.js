@@ -17,8 +17,13 @@ function insertToQueue(url, content_type, to_format) {
     request.onreadystatechange = function(e) {
         if (request.readyState == 4) {
             if (request.status == 200) {
-                var dom = request.responseXML;
-                alert(dom);
+                var dom = $($.parseXML(request.response));
+                queue.push({
+                    url: url,
+                    status: dom.find('status code').text(),
+                    download_url: dom.find('params downloadUrl').text(),
+                    hash: dom.find('params hash').text(),
+                });
             }
         }
     }
