@@ -13,7 +13,9 @@ $response = array(
 
 try {
 
-    $video_url = "http://www.youtube.com/watch?v=ovbtmQEXSEY&feature=topvideos_music";
+    #$video_url = "http://www.youtube.com/watch?v=ovbtmQEXSEY&feature=topvideos_music";
+    $video_url = $_GET["url"];
+    
     if (!is_valid_url($video_url)) {
         throw new Exception("Invalid input URL");
     }
@@ -74,9 +76,8 @@ try {
 }
 
 
-# header('Content-Type: application/json; charset=utf-8');
-# header("Expires: -1");
+header('Content-Type: application/json; charset=utf-8');
+header("Expires: -1");
 echo json_encode($response);
-
 
 ?>
