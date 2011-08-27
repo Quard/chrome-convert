@@ -59,7 +59,7 @@ ocapi = {
             var job = queue[i];
             if (job.status == 0) {
                 var request = new XMLHttpRequest();
-                var xml = '<?xml version="1.0" encoding="utf-8" ?><queue><apiKey>'+ apiKey +'</apiKey><hash>'+ job.hash +'</hash></queue>';
+                var xml = '<?xml version="1.0" encoding="utf-8" ?><queue><apiKey>'+ ocapi.apiKey +'</apiKey><hash>'+ job.hash +'</hash></queue>';
                 var data = new FormData();
 
                 data.append('queue', xml);
@@ -74,7 +74,7 @@ ocapi = {
                     console.log(queue);
                     if (job.status == 100) {
                         // ok, can donwload
-                        local
+                        //local
                     }
                 }
             }
