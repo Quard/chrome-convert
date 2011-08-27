@@ -1,6 +1,11 @@
 body {
-    width: 200px;
-    height: 10px;
-    font-family: sans-serif;
+    width: 300px;
+    font-family: Georgia;
     font-size: 13px;
+}
+h2 {
+    text-shadow: 1px 1px 0 #999;
+}
+.help-do {
+    color: #693;
 }
