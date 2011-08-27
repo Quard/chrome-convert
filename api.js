@@ -72,6 +72,9 @@ ocapi = {
                     job.direct_download = dom.find('params directDownload').text();
                     console.log('--')
                     console.log(queue);
+                    if (job.status == 100) {
+                        // ok, can donwload
+                    }
                 }
             }
         }
