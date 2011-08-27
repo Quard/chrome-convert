@@ -74,13 +74,13 @@ ocapi = {
                     console.log(queue);
                     if (job.status == 100) {
                         // ok, can donwload
+                        local
                     }
                 }
             }
         }
         setTimeout('ocapi.checkStatus()', 20000);
 
-		return "Blyaaa!"
 	}
 }
 
