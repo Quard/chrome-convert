@@ -1,12 +1,3 @@
-var conversion_page='?external_url='
-var links = {
- // image: 'http://image-conversion.online-convert.com/',
- // ebook: 'http://ebook-conversion.online-convert.com/',
-//  doc:   'http://document-conversion.online-convert.com/',
-  video: 'http://video-conversion.online-convert.com/'
-//  audio: 'http://audio-conversion.online-convert.com/'
-}
-var apiKey = '5d7c6b9862c6b8a9633ace4cf5fa1133';
 
 /**
 Submits current page URL into OC queue
