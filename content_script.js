@@ -5,19 +5,27 @@ Submits current page URL into OC queue
 function convert_video(info, tab) {
    var pageUrl = info.pageUrl;  
 	
-	// console.log(info);
-	// console.log(tab)
-   // window.open(url);
-
  	// submit URL to OC queue
-    ocapi.submitVideo(pageUrl, function(hashCode) {
-		// alert("Hashcode:" + hashCode)
+    ocapi.submitVideo(pageUrl, function(record) {
+		
+			// record = {
+			//                 url: url,
+			//                 status: dom.find('status code').text(),
+			//                 download_url: dom.find('params downloadUrl').text(),
+			//                 hash: dom.find('params hash').text(),
+			//             };
+			// 	
+		
 		
 		// Create a simple text notification:
 		var notification = webkitNotifications.createNotification(
 		  'logo.png',  // icon url - can be relative
-		  'Hello!',  // notification title
-		  'Lorem ipsum...'  // notification body text
+		  'Submitted your video for download',  // notification title
+		   
+		  // notification body text
+		  'URL:' + record.url+"\r\n"+
+		    'download_url:' + record.download_url + 
+		    'hash' +record.hash
 		);
 
 		// // Or create an HTML notification:
