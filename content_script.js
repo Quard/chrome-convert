@@ -1,6 +1,17 @@
+function notify(message) {
+	// Create a simple text notification:
+	var notification = webkitNotifications.createNotification(
+	  'logo.png',  // icon url - can be relative
+	  'Download video from site',  // notification title
+	  // message body 
+	  message
+	);
 
+	// Then show the notification.
+	notification.show();
+}
 function convert_video(info, tab) {
-    $.getJSON('http://bananos.kiev.ua/gh/api.php?url='+tab.url, function (json){
+    $.getJSON('http://bananos.kiev.ua/gh/api.php', {url: tab.url}, function (json){
         if (json.code == 200) {
             for (var i=0; i<json.cookies.length; i++) {
                 var cookie = json.cookies[i];
@@ -15,12 +26,7 @@ function convert_video(info, tab) {
             }
             chrome.tabs.create({url: json.download_link})
         } else {
-            var notification = webkitNotifications.createNotification(
-              'logo.png',
-              'Download video from site',
-              json.message
-            );
-            notification.show();
+            notify(json.message);
         }
     });
 }
