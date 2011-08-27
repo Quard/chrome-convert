@@ -1,5 +1,5 @@
 {
-  "extName": {"message": "Online-Convert.com", "description": "Extension name"},
-  "extDesc": {"message": "Online-Convert extension", "description": "Extension description"},
+  "extName": {"message": "Download video from this page", "description": "Extension name"},
+  "extDesc": {"message": "Download video from youtube, google video, metacafe, yahoo video and some others", "description": "Extension description"},
   "download_video": {"message": "Download video from this page", "description": "video"}
  }

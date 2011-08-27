@@ -12,16 +12,15 @@
 							"http://bananos.kiev.ua/gh/api.php",
 							"*://video.google.com/*",
                             "*://*.youtube.com/watch*",
-                            "*://metacafe.com/*",
-                            "*://photobucket.com/*",
-                            "*://video.yahoo.com/*",
-                            "*://dailymotion.com/video/*",
-                            "*://depositfiles.com/*",
-                            "*://facebook.com/video/video.php*"
+                            "*://*.metacafe.com/watch/*",
+                            "*://*.photobucket.com/*",
+                            "*://*.yahoo.com/*",
+                            "*://*.dailymotion.com/video/*",
+                            "*://*.facebook.com/video/video.php*"
                             ],
     "background_page":      "background.html",
     "browser_action":      { "default_icon": "logo.png",
-                             "default_title": "Download video",
+                             "default_title": "Download video from this page",
                              "popup": "popup.html" },
     "icons":               {  "48": "logo.png" }
 }

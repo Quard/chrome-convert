@@ -9,3 +9,9 @@ h2 {
 .help-do {
     color: #693;
 }
+.comment {
+    color: #777;
+}
+.comment a {
+    color: #777;
+}

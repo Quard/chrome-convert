@@ -31,6 +31,10 @@ function convert_video(info, tab) {
     });
 }
 
+chrome.pageAction.onClicked.addListener(function(tab) {
+    convert_video({}, tab);
+});
+
 /* inject "Download" link into page/link context menus */
 
 var video_menu = chrome.contextMenus.create({
@@ -40,11 +44,11 @@ var video_menu = chrome.contextMenus.create({
     "documentUrlPatterns": [
         '*://video.google.com/*',
         '*://*.youtube.com/watch*',
-        '*://metacafe.com/*',
-        '*://photobucket.com/*',
+        '*://*.metacafe.com/watch/*',
+        '*://*.photobucket.com/*',
+        '*://*.yahoo.com/?vid=*',
         '*://video.yahoo.com/*',
-        '*://dailymotion.com/video/*',
-        '*://depositfiles.com/*',
-        '*://facebook.com/video/video.php*',
+        '*://*.dailymotion.com/video/*',
+        '*://*.facebook.com/video/video.php*',
     ]
 });
