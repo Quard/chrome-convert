@@ -1,55 +1,49 @@
-var conversion_page='?external_url='
-var links = {
- // image: 'http://image-conversion.online-convert.com/',
- // ebook: 'http://ebook-conversion.online-convert.com/',
-//  doc:   'http://document-conversion.online-convert.com/',
-  video: 'http://video-conversion.online-convert.com/'
-//  audio: 'http://audio-conversion.online-convert.com/'
-}
-// 
-// function convert_image(info, tab) {
-//    var img_url = info.linkUrl || info.srcUrl;
-//    var url = links.image+conversion_page+img_url;  
-//    window.open(url);
-// }
 
-// 
-// function convert_ebook(info, tab) {
-//    var url = links.ebook+conversion_page+info.pageUrl;  
-//    window.open(url);
-// }
-// 
-// function convert_doc(info, tab) {
-//    chrome.tabs.sendRequest(tab.id, {"msg": "findImages"}, function(r){
-//      images = "";
-//      for (img in r.images) 
-//        images += r.images[img].url;
-//      alert(images);
-//    });
-// 
-//    var url = links.doc+conversion_page+(info.linkUrl || info.pageUrl);  
-// }
 
+
+
+/**
+Submits current page URL into OC queue
+**/
 function convert_video(info, tab) {
-   var url = links.video+conversion_page+info.pageUrl;  
-	console.log("Info:" + info);
-	console.log("Tab:" + tab)
+   var pageUrl = info.pageUrl;  
+	
+	// console.log(info);
+	// console.log(tab)
    // window.open(url);
+
+ 	// submit URL to OC queue
+    ocapi.submitVideo(pageUrl, function(hashCode) {
+		// alert("Hashcode:" + hashCode)
+		
+		// Create a simple text notification:
+		var notification = webkitNotifications.createNotification(
+		  'logo.png',  // icon url - can be relative
+		  'Hello!',  // notification title
+		  'Lorem ipsum...'  // notification body text
+		);
+
+		// // Or create an HTML notification:
+		// 		var notification = webkitNotifications.createHTMLNotification(
+		// 		  'notification.html'  // html url - can be relative
+		// 		);
+
+		// Then show the notification.
+		notification.show();		
+	});
+
+
+
+	
+	
+
 }
 
-// var image_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("convert_image"),
-//                                              "contexts": ["image"],
-//                                              "onclick": convert_image});
-// 
-// var ebook_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("convert_ebook"),
-//                                              "contexts": ["page"],
-//                                              "onclick": convert_ebook});
-// 
-// var doc_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("convert_doc"),
-//                                            "contexts": ["page", "link"],
-//                                            "onclick": convert_doc});
 
-var video_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("convert_video"),
+
+/* inject "Download" link into page/link context menus */ 
+
+var video_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("download_video"),
                                            "contexts": ["page", "link"],
                                            "onclick": convert_video
 //                                           "documentUrlPatterns": ['*://*.youtube.com/watch*',
@@ -57,8 +51,3 @@ var video_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("co
 //                                                                   '*://5min.com/*',
 //                                                                   ]
                                                                    });
-
-// 
-// var audio_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("convert_audio"),
-//                                            "contexts": ["link"],
-//                                            "onclick": convert_audio});

@@ -6,6 +6,7 @@
     "description":          "__MSG_extDesc__",
     "version":              "0.1",
     "permissions":         ["contextMenus",
+							"notifications",
                             "http://*/*",
                             "https://*/*"],
     "background_page":      "background.html",

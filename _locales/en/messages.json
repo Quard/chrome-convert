@@ -1,9 +1,5 @@
 {
   "extName": {"message": "Online-Convert.com", "description": "Extension name"},
   "extDesc": {"message": "Online-Convert extension", "description": "Extension description"},
-  "convert_image": {"message": "Convert image", "description": "image"},
-  "convert_doc": {"message": "Convert to document", "description": "doc"},
-  "convert_video": {"message": "Convert video", "description": "video"},
-  "convert_audio": {"message": "Convert audio", "description": "audio"},
-  "convert_ebook": {"message": "Convert page to ebook", "description": "ebook"}
-}
+  "download_video": {"message": "Download video from this page", "description": "video"}
+ }
