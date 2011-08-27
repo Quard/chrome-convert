@@ -19,13 +19,13 @@ function save_options() {
 // Restores select box state to saved value from localStorage.
 function restore_options() {
   var downloaded = JSON.parse(localStorage["downloaded"]);
-  var div_down = document.getElementById("downloaded")
-  var fragment = document.createDocumentFragment();
+  var html = $("<ul></ul>");
   for (var i = 0; i < downloaded.length; i++)
   {
     var item = downloaded[i];
-   
+    html.append("<li></li>").append("<a href='"+item.url+"'>"+item.title+"</a>");
   }
+  $('#downloaded').append(html);
   var favorite = localStorage["favorite_color"];
   if (!favorite) {
     return;
