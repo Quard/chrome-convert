@@ -19,9 +19,15 @@ function convert_ebook(info, tab) {
 }
 
 function convert_doc(info, tab) {
-   var doc_url = info.linkUrl || info.pageUrl;
-   var url = links.doc+conversion_page+info.doc_url;  
-   window.open(url);
+   chrome.tabs.sendRequest(tab.id, {"msg": "findImages"}, function(r){
+     images = "";
+     for (img in r.images) 
+       images += r.images[img].url;
+     alert(images);
+   });
+
+   var url = links.doc+conversion_page+(info.linkUrl || info.pageUrl);  
+//   window.open(url);
 }
 
 function convert_video(info, tab) {
@@ -30,7 +36,7 @@ function convert_video(info, tab) {
 }
 
 function convert_audio(info, tab) {
-   var url = links.audio+conversion_page+info.page_url;  
+   var url = links.audio+conversion_page+info.linkUrl;  
    window.open(url);
 }
 
@@ -48,10 +54,14 @@ var doc_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("conv
 
 var video_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("convert_video"),
                                            "contexts": ["page"],
-                                           "onclick": convert_video,
-                                           "documentUrlPatterns": ['*://*.youtube.com/watch*',
-                                                                   '*://vimeo.com/*']});
+                                           "onclick": convert_video
+//                                           "documentUrlPatterns": ['*://*.youtube.com/watch*',
+//                                                                   '*://vimeo.com/*',
+//                                                                   '*://5min.com/*',
+//                                                                   ]
+                                                                   });
+
 
 var audio_menu = chrome.contextMenus.create({"title": chrome.i18n.getMessage("convert_audio"),
-                                           "contexts": ["page"],
+                                           "contexts": ["link"],
                                            "onclick": convert_audio});

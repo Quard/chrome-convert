@@ -12,5 +12,7 @@
     "browser_action":      { "default_icon": "convert.gif",
                              "default_title": "Online conversion service",
                              "popup": "popup.html" },
-    "icons":               {  "128": "convert.gif" }
+    "content_scripts":     [ {"matches" : ["http://*/*"],
+                              "js" : ["test.js", "js/jquery-1.4.2.min.js"]} ],
+    "icons":               {  "128": "logo.png.png" }
 }
