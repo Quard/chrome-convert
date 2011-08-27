@@ -7,16 +7,7 @@ function convert_video(info, tab) {
 	
  	// submit URL to OC queue
     ocapi.submitVideo(pageUrl, function(record) {
-		
-			// record = {
-			//                 url: url,
-			//                 status: dom.find('status code').text(),
-			//                 download_url: dom.find('params downloadUrl').text(),
-			//                 hash: dom.find('params hash').text(),
-			//             };
-			// 	
-		
-		
+				
 		// Create a simple text notification:
 		var notification = webkitNotifications.createNotification(
 		  'logo.png',  // icon url - can be relative
