@@ -11,8 +11,6 @@
     "background_page":      "background.html",
     "browser_action":      { "default_icon": "convert.gif",
                              "default_title": "Online conversion service",
-                             "popup": "popup.html" },
-    "content_scripts":     [ {"matches" : ["http://*/*"],
-                              "js" : ["js/jquery-1.4.2.min.js"]} ],
-    "icons":               {  "128": "logo.png.png" }
+                             "popup": "popup.html" },   
+    "icons":               {  "128": "logo.png" }
 }
