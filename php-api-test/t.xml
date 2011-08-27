@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<queue>
+ <apiKey>5d7c6b9862c6b8a9633ace4cf5fa1133</apiKey>
+ <targetType>video</targetType>
+ <targetMethod>convert-to-avi</targetMethod>
+ <testMode>true</testMode>
+ <sourceUrl>http://www.youtube.com/watch?v=dHdQjdDtNZ8&amp;feature=grec_index</sourceUrl>
+</queue>
+
