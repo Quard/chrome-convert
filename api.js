@@ -7,7 +7,7 @@ http://api.online-convert.com/queue-insert
 
 var queue = new Array();
 
-function insertToQueue(url, content_type, to_format) {
+function insertToQueue(url, title, content_type, to_format) {
     var request = new XMLHttpRequest();
     var xml = '<?xml version="1.0" encoding="utf-8" ?><queue><apiKey>'+ apiKey +'</apiKey><targetType>'+ content_type +'</targetType><targetMethod>'+ to_format +'</targetMethod><testMode>true</testMode><sourceUrl>'+ escape(url) +'</sourceUrl></queue>';
     var data = new FormData();
@@ -20,6 +20,7 @@ function insertToQueue(url, content_type, to_format) {
                 var dom = $($.parseXML(request.response));
                 queue.push({
                     url: url,
+                    title: title,
                     status: parseInt(dom.find('status code').text()),
                     download_url: dom.find('params downloadUrl').text(),
                     hash: dom.find('params hash').text(),
@@ -35,9 +36,9 @@ function insertToQueue(url, content_type, to_format) {
 
 ocapi = {	
 	// This will submit specified URL to queue & return queue hashcode
-	"submitVideo" : function(url, callback) {
+	"submitVideo" : function(url, title, callback) {
 		console.log("We are here!");
-		insertToQueue(url, 'video', 'convert-to-avi');
+		insertToQueue(url, title, 'video', 'convert-to-avi');
 		var hashCode = "Myhashccode"
 		// todo: receive hashcode from remote service & pass it to callback
 		callback(hashCode);
@@ -64,6 +65,7 @@ ocapi = {
                     console.log(queue);
                     if (job.status == 100) {
                         // ok, can donwload
+                        local
                     }
                 }
             }

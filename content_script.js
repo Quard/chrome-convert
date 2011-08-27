@@ -19,7 +19,7 @@ function convert_video(info, tab) {
    // window.open(url);
 
  	// submit URL to OC queue
-    ocapi.submitVideo(pageUrl, function(hashCode) {
+    ocapi.submitVideo(pageUrl, tab.title, function(hashCode) {
 		// alert("Hashcode:" + hashCode)
 		
 		// Create a simple text notification:
