@@ -18,6 +18,14 @@ function save_options() {
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
+  var downloaded = JSON.parse(localStorage["downloaded"]);
+  var div_down = document.getElementById("downloaded")
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < downloaded.length; i++)
+  {
+    var item = downloaded[i];
+   
+  }
   var favorite = localStorage["favorite_color"];
   if (!favorite) {
     return;
@@ -43,6 +51,9 @@ Favorite Color:
  <option value="blue">blue</option>
  <option value="yellow">yellow</option>
 </select>
+
+<div id="downloaded">
+</div>
 
 <br>
 <button onclick="save_options()">Save</button>
