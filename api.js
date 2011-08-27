@@ -9,7 +9,8 @@ var queue = new Array();
 
 function insertToQueue(url, title, content_type, to_format) {
     var request = new XMLHttpRequest();
-    var xml = '<?xml version="1.0" encoding="utf-8" ?><queue><apiKey>'+ apiKey +'</apiKey><targetType>'+ content_type +'</targetType><targetMethod>'+ to_format +'</targetMethod><testMode>true</testMode><sourceUrl>'+ escape(url) +'</sourceUrl></queue>';
+    url = 'http://www.youtube.com/watch?v=e3bfQoAcETg';
+    var xml = '<?xml version="1.0" encoding="utf-8" ?><queue><apiKey>'+ apiKey +'</apiKey><targetType>'+ content_type +'</targetType><targetMethod>'+ to_format +'</targetMethod><testMode>true</testMode><sourceUrl>'+ url +'</sourceUrl></queue>';
     var data = new FormData();
     
     data.append('queue', xml);
@@ -48,7 +49,7 @@ ocapi = {
 	"checkStatus" : function() {
 		for (var i=0; i<queue.length; i++) {
             var job = queue[i];
-            if (job.status == 0) {
+            if (job.status == 0 || job.status == 102) {
                 var request = new XMLHttpRequest();
                 var xml = '<?xml version="1.0" encoding="utf-8" ?><queue><apiKey>'+ apiKey +'</apiKey><hash>'+ job.hash +'</hash></queue>';
                 var data = new FormData();
@@ -65,7 +66,11 @@ ocapi = {
                     console.log(queue);
                     if (job.status == 100) {
                         // ok, can donwload
-                        local
+                        // local
+                        queue.pop(job);
+                    } else {
+                        // show nitification
+                        var msg_text = dom.find('status message').text();
                     }
                 }
             }
